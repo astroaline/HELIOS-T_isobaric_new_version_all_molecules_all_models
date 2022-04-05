@@ -39,16 +39,16 @@ class Priors:
                     new_lim = np.log10(1 - h2o_abundance)
                     diff = priors[param][0] + new_lim
                     cube[i] = cube[i]*diff + priors[param][1]
-            elif param == 'G':    # set gaussian priors for planet gravity 
+            elif param == 'G':    # set gaussian priors for planetary gravity 
                 try:
-                    cube[i]=pri.GaussianPrior(cube[i],g,g_uncertainty)
+                    cube[i] = pri.GaussianPrior(cube[i], g, g_uncertainty)
                 except:
-                    cube[i]=pri.GaussianPrior(cube[i],g,(g_uperr+g_loerr)/2)
-            elif param == 'Rstar':    # set gaussian priors for star radius
+                    cube[i] = pri.GaussianPrior(cube[i], g, (g_uperr + g_loerr)/2)
+            elif param == 'Rstar':    # set gaussian priors for stellar radius
                 try:
-                    cube[i]=pri.GaussianPrior(cube[i],rstar,rstar_uncertainty)
+                    cube[i] = pri.GaussianPrior(cube[i], rstar, rstar_uncertainty)
                 except:
-                    cube[i]=pri.GaussianPrior(cube[i],rstar,(rstar_uperr+rstar_loerr)/2)
+                    cube[i] = pri.GaussianPrior(cube[i], rstar, (rstar_uperr + rstar_loerr)/2)
             else:
                 cube[i] = cube[i]*priors[param][0] + priors[param][1]  # set uniform priors based on values in input
 
